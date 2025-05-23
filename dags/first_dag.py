@@ -24,3 +24,13 @@ with DAG(
     print_date = BashOperator(
         task_id='print_date',
         bash_command='date'
+    )
+
+    # Task 2: Say hello
+    say_hello = BashOperator(
+        task_id='say_hello',
+        bash_command='echo "Hello from Airflow!"'
+    )
+
+    # Set task order
+    print_date >> say_hello
